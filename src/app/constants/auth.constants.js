@@ -1,0 +1,4 @@
+export const SIGNIN = 'SIGNIN'
+export const SIGNIN_SUCCESS = 'SIGNIN_SUCCESS'
+export const SHOW_SIGNIN_ERROR = 'SHOW_SIGNIN_ERROR'
+export const HIDE_SIGNIN_ERROR = 'HIDE_SIGNIN_ERROR'

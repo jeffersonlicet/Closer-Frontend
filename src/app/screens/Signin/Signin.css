@@ -1,0 +1,29 @@
+.login-form-button {
+    text-transform: uppercase
+}
+
+.ant-form-item-label {
+    line-height: 20px
+}
+.ant-form-item-label label {
+    font-size: 13px;
+    color: #848484;
+    text-transform: uppercase;
+}
+
+.ant-form-item-label label::after {
+    content: ""
+}
+
+.ant-popover-arrow, .ant-popover-inner {
+    background: #F4726F;
+}
+.ant-popover-title {
+    color: #FFF;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(0,0,0,0.09);
+}
+.ant-popover-inner-content { 
+    color: #FFF;     
+    font-weight: bold;
+}
