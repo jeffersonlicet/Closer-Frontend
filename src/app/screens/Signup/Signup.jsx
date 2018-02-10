@@ -40,6 +40,13 @@ class Signup extends React.Component {
       password_confirmation: '', 
     }
   }
+  componentWillMount() {
+    this.props.dispatch(hideValidatingUsernameError())
+    this.props.dispatch(hideValidatingEmailError())
+    this.props.dispatch(hideValidatingPasswordError())
+    this.props.dispatch(hideValidatingPasswordConfirmationError())
+    this.props.dispatch(hideSignupFormError())
+  }
 
   componentDidMount () {
     this.usernameInput.focus()

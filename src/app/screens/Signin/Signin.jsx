@@ -22,6 +22,10 @@ class Signin extends React.Component {
     this.state = { username: '', password: '' }
   }
 
+  componentWillMount() { 
+    this.props.dispatch(hideSigninFormError())
+  }
+
   componentDidMount () {
     this.usernameInput.focus()
   }
@@ -51,13 +55,6 @@ class Signin extends React.Component {
     this.props.dispatch(signin(usernameVal, passwordVal))
   }
 
-  handleEnter = (e) => {
-    if (!e.target.value) { return }
-    if (e.target.id === 'username') {
-      this.passwordInput.focus()
-    } else { this.handleSubmit(e) }
-  }
-
   render () {
     return (
       <div>
@@ -74,11 +71,11 @@ class Signin extends React.Component {
 
                 <Form onSubmit={this.handleSubmit}>
                   <FormItem label='USERNAME OR EMAIL'>
-                    <Input id='username' onPressEnter={this.handleEnter} onChange={this.handleChange} ref={(input) => { this.usernameInput = input }} size='large' />
+                    <Input id='username' onChange={this.handleChange} ref={(input) => { this.usernameInput = input }} size='large' />
                   </FormItem>
 
                   <FormItem style={{marginTop: '-10px'}} label='PASSWORD'>
-                    <Input id='password' onPressEnter={this.handleEnter} onChange={this.handleChange} ref={(input) => { this.passwordInput = input }} size='large' type='password' />
+                    <Input id='password' onChange={this.handleChange} ref={(input) => { this.passwordInput = input }} size='large' type='password' />
                   </FormItem>
 
                   <ErrorPopover
