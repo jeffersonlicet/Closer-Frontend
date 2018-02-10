@@ -2,6 +2,4 @@
     color: #ffccc7!important
 }
 
-.error-popover .ant-popover-title{
-    color:#ff4d4f
-}
+.ant-btn { text-transform:  uppercase }

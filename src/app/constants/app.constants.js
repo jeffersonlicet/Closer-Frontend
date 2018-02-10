@@ -9,3 +9,6 @@ export const TO_BUSY_STATE = 'TO_BUSY_STATE'
 export const TO_NORMAL_STATE = 'TO_NORMAL_STATE'
 
 export const SIGNIN_ROUTE = '/signin'
+export const SIGNUP_ROUTE = '/signup'
+
+export const PASSWORD_LENGHT = 6

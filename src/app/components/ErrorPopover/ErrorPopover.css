@@ -1,0 +1,12 @@
+.ant-popover-arrow, .ant-popover-inner {
+    background: #F4726F;
+}
+.ant-popover-title {
+    color: #FFF;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(0,0,0,0.09);
+}
+.ant-popover-inner-content { 
+    color: #FFF;     
+    font-weight: bold;
+}

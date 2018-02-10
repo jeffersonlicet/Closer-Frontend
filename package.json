@@ -14,7 +14,8 @@
     "react-scripts": "1.1.0",
     "react-thunk": "^1.0.0",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "with-query": "^1.0.2"
   },
   "scripts": {
     "start": "react-app-rewired start",
@@ -26,5 +27,8 @@
     "babel-plugin-import": "^1.6.3",
     "react-app-rewire-less": "^2.1.0",
     "react-app-rewired": "^1.4.1"
+  },
+  "standard": {
+    "parser": "babel-eslint"
   }
 }
