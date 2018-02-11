@@ -48,7 +48,7 @@ export const SigninService = (identity, password) => {
     method: 'POST',
     body: JSON.stringify({
       identity: identity,
-      password: 'password'
+      password: password
     }),
     headers: defaultHeaders
   }
@@ -61,8 +61,37 @@ export const SigninService = (identity, password) => {
         .then((response) => {
           if (response.status) {
             cookie.save('user', response.user)
+            cookie.save('credentials', response.credentials)
             cookie.save('loggedIn', true)
-            return response.user
+            return response
+          }
+
+          return Promise.reject(response.report)
+        })
+}
+
+export const SignupService = (username, email, password) => {
+  const requestOptions = {
+    method: 'POST',
+    body: JSON.stringify({
+      username: username,
+      email: email,
+      password: password
+    }),
+    headers: defaultHeaders
+  }
+
+  return fetch(SERVICE_URL + '/signup', requestOptions)
+        .then((response) => {
+          if (!response.ok) { Promise.reject(response.statusText) }
+          return response.json()
+        })
+        .then((response) => {
+          if (response.status) {
+            cookie.save('user', response.user)
+            cookie.save('credentials', response.credentials)
+            cookie.save('loggedIn', true)
+            return response
           }
 
           return Promise.reject(response.report)

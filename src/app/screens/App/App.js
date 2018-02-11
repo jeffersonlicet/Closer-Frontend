@@ -2,7 +2,7 @@ import React from 'react'
 import { Router } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading-bar'
 
-import history from '../../helpers/history';
+import { history } from '../../helpers/history'
 
 // import a global style
 import '../../vendor/Closr/Closr.css'

@@ -1,7 +1,10 @@
 import { 
   SIGNIN_SUCCESS, 
+  SIGNUP_SUCCESS,
   SHOW_SIGNIN_ERROR, 
   HIDE_SIGNIN_ERROR, 
+  SHOW_SIGNUP_ERROR, 
+  HIDE_SIGNUP_ERROR,
   VALIDATING_USERNAME,
   VALIDATING_EMAIL,
   VALIDATING_PASSWORD,
@@ -13,10 +16,12 @@ import {
 import cookie from 'react-cookies'
 
 let user = cookie.load('user')
+let credentials = cookie.load('credentials')
 
 const initialState = {
-  loggedIn: (!!user),
+  loggedIn: !!user,
   user: user,
+  credentials: credentials,
   signinForm: { anyError: false, error: { title: '', content: '' } },
   signupForm: { 
     validation: { 
@@ -30,11 +35,17 @@ const initialState = {
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case SIGNIN_SUCCESS:
-      return { ...state, loggedIn: true, user: action.user, signinForm: { anyError: false } }
+      return { ...state, loggedIn: true, user: action.user, credentials: action.credentials, signinForm: { ...state.signinForm,  anyError: false } }
+    case SIGNUP_SUCCESS:
+      return { ...state, loggedIn: true, user: action.user, credentials: action.credentials, signinForm: {  ...state.signinForm, anyError: false } }
     case SHOW_SIGNIN_ERROR:
-      return { ...state, signinForm: { anyError: true, error: { title: action.error.title, content: action.error.content } } }
+      return { ...state, signinForm: {  ...state.signinForm, anyError: true, error: { title: action.error.title, content: action.error.content } } }
     case HIDE_SIGNIN_ERROR:
       return { ...state, signinForm: { ...state.signinForm, anyError: false } }
+    case SHOW_SIGNUP_ERROR:
+      return { ...state, signupForm: { ...state.signupForm, anyError: true, error: { title: action.error.title, content: action.error.content } } }
+    case HIDE_SIGNUP_ERROR:
+      return { ...state, signupForm: { ...state.signupForm, anyError: false } }
     case VALIDATING_USERNAME:
       return { ...state, signupForm: { ...state.signupForm,  validation: { ...state.signupForm.validation, username: { anyError: action.state === 'error', error:action.error,  status: action.state } }}}
     case VALIDATING_EMAIL:

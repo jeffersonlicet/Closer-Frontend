@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 import { Layout, Row, Col, Form, Input, Button, Divider } from 'antd'
 import { 
+  signup,
   hideSignupFormError, 
   verifyUsername, 
   verifyEmail, 
@@ -40,6 +41,7 @@ class Signup extends React.Component {
       password_confirmation: '', 
     }
   }
+  
   componentWillMount() {
     this.props.dispatch(hideValidatingUsernameError())
     this.props.dispatch(hideValidatingEmailError())
@@ -56,27 +58,31 @@ class Signup extends React.Component {
     this.setState({ [e.target.id]: e.target.value })
 
     if(e.target.id === 'username') {
-      this.props.dispatch(hideValidatingUsernameError())
+      if(this.props.signupForm.validation.username.status)
+        this.props.dispatch(hideValidatingUsernameError())
+
       if(usernameTimer)
         window.clearTimeout(usernameTimer)
 
       usernameTimer = window.setTimeout(()=> {
         this.props.dispatch(verifyUsername(this.state.username))
-      }, 300);
+      }, 400);
     }
 
     if(e.target.id === 'email') {
-      this.props.dispatch(hideValidatingEmailError())
+      if(this.props.signupForm.validation.email.status)
+        this.props.dispatch(hideValidatingEmailError())
       if(emailTimer)
         window.clearTimeout(emailTimer)
 
       emailTimer = window.setTimeout(()=> {
           this.props.dispatch(verifyEmail(this.state.email))
-      }, 300);
+      }, 400);
     }
 
     if(e.target.id === 'password') {
-      this.props.dispatch(hideValidatingPasswordError())
+      if(this.props.signupForm.validation.password.status)
+        this.props.dispatch(hideValidatingPasswordError())
       if(passwordTimer)
         window.clearTimeout(passwordTimer)
 
@@ -86,30 +92,37 @@ class Signup extends React.Component {
           if(this.state.password_confirmation)
             this.props.dispatch(verifyPasswordConfirmation(this.state.password, this.state.password_confirmation))
 
-      }, 300);
+      }, 400);
     }
 
     if(e.target.id === 'password_confirmation') {
-      this.props.dispatch(hideValidatingPasswordConfirmationError())
+      if(this.props.signupForm.validation.password_confirmation.status)
+        this.props.dispatch(hideValidatingPasswordConfirmationError())
       if(passwordConfirmationTimer)
         window.clearTimeout(passwordConfirmationTimer)
 
         passwordConfirmationTimer = window.setTimeout(()=> {
           this.props.dispatch(verifyPasswordConfirmation(this.state.password, this.state.password_confirmation))
-      }, 300);
+      }, 400);
     }
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log("submiting")
     this.props.dispatch(hideSignupFormError())
 
     let usernameVal = this.state.username
+    let emailVal = this.state.email
     let passwordVal = this.state.password
+    let passwordConfirmationVal = this.state.password_confirmation
 
     if (!usernameVal) {
       this.usernameInput.focus()
+      return
+    }
+
+    if (!emailVal) {
+      this.emailInput.focus()
       return
     }
 
@@ -117,7 +130,35 @@ class Signup extends React.Component {
       this.passwordInput.focus()
     }
 
-    // this.props.dispatch(signup(usernameVal, passwordVal))
+    if (!passwordConfirmationVal) {
+      this.passwordConfirmationInput.focus()
+    }
+
+    if(this.props.signupForm.validation.username.status !== 'success')
+    {
+      this.props.dispatch(verifyUsername(this.state.username))
+      return
+    }
+
+    if(this.props.signupForm.validation.email.status !== 'success')
+    {
+      this.props.dispatch(verifyEmail(this.state.email))
+      return
+    }
+
+    if(this.props.signupForm.validation.password.status !== 'success')
+    {
+      this.props.dispatch(verifyPassword(this.state.password))
+      return
+    }
+
+    if(this.props.signupForm.validation.password_confirmation.status !== 'success')
+    {
+      this.props.dispatch(verifyPasswordConfirmation(this.state.password_confirmation))
+      return
+    }
+
+    this.props.dispatch(signup(usernameVal, emailVal, passwordVal))
   }
 
   render () {

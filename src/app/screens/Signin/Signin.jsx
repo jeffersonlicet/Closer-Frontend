@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 import { Layout, Row, Col, Form, Input, Button, Divider } from 'antd'
 import { signin, hideSigninFormError } from '../../actions/auth.actions'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import ErrorPopover from '../../components/ErrorPopover/ErrorPopover'
 
 import { SIGNUP_ROUTE } from '../../constants/app.constants'
@@ -104,11 +104,12 @@ class Signin extends React.Component {
 
 function mapStateToProps (state) {
   const { isBusy } = state.appReducer
-  const { signinForm } = state.authReducer
+  const { signinForm, loggedIn } = state.authReducer
 
   return {
     isBusy,
-    signinForm
+    signinForm,
+    loggedIn
   }
 }
 
