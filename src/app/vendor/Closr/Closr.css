@@ -3,3 +3,7 @@
 }
 
 .ant-btn { text-transform:  uppercase }
+
+* {
+    *outline: 1px solid #ffccc7;
+}
