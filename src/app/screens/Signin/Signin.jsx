@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 import { Layout, Row, Col, Form, Input, Button, Divider } from 'antd'
 import { signin, hideSigninFormError } from '../../actions/auth.actions'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import ErrorPopover from '../../components/ErrorPopover/ErrorPopover'
 
 import { SIGNUP_ROUTE } from '../../constants/app.constants'
@@ -83,7 +83,7 @@ class Signin extends React.Component {
                     title={this.props.signinForm.error.title}
                     visible={this.props.signinForm.anyError}
                     placement='right'>
-                    <Button style={{marginTop: '-10px'}} type='primary' size='large' htmlType='submit' className='shadow-1'>
+                    <Button disabled={this.props.isBusy} style={{marginTop: '-10px'}} type='primary' size='large' htmlType='submit' className='shadow-1'>
                         Sign in
                     </Button>
                   </ErrorPopover>

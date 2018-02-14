@@ -11,6 +11,7 @@ import '../../vendor/Closr/Closr.css'
 import Home from '../Home/Home'
 import Signup from '../Signup/Signup'
 import Signin from '../Signin/Signin'
+import Logout from '../Logout/Logout'
 
 // import routes
 import AuthenticatedRoute from '../../routes/AuthenticatedRoute'
@@ -27,6 +28,7 @@ const App = () =>
       <AppSpinner />
       <LoadingBar showFastActions style={{ backgroundColor: '#F4726F' }} />
       <AuthenticatedRoute exact path="/" component={Home} />
+      <AuthenticatedRoute path="/logout" component={Logout} />
       <GuestRoute path="/signup" component={Signup} />
       <GuestRoute path="/signin" component={Signin} />
     </AppWrapper>

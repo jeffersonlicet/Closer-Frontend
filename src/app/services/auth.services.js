@@ -1,5 +1,5 @@
 import { SERVICE_URL } from '../constants/app.constants'
-import cookie from 'react-cookies'
+import { save, remove } from '../services/storage.services'
 import withQuery from 'with-query'
 
 const defaultHeaders = {
@@ -60,9 +60,9 @@ export const SigninService = (identity, password) => {
         })
         .then((response) => {
           if (response.status) {
-            cookie.save('user', response.user)
-            cookie.save('credentials', response.credentials)
-            cookie.save('loggedIn', true)
+            save('user', response.user)
+            save('credentials', response.credentials)
+            save('loggedIn', true)
             return response
           }
 
@@ -88,12 +88,18 @@ export const SignupService = (username, email, password) => {
         })
         .then((response) => {
           if (response.status) {
-            cookie.save('user', response.user)
-            cookie.save('credentials', response.credentials)
-            cookie.save('loggedIn', true)
+            save('user', response.user)
+            save('credentials', response.credentials)
+            save('loggedIn', true)
             return response
           }
 
           return Promise.reject(response.report)
         })
+}
+
+export const Logout = () => {
+  remove('user')
+  remove('credentials')
+  remove('loggedIn')
 }

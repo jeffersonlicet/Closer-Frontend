@@ -1,13 +1,12 @@
 import React from 'react'
-import cookie from 'react-cookies'
 import { Route, Redirect } from 'react-router-dom'
 import { SIGNIN_ROUTE } from '../constants/app.constants'
 
-
+import { read } from '../services/storage.services'
 
 const AuthenticatedRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
-    cookie.load('loggedIn')
+    read('loggedIn')
             ? <Component {...props} />
             : <Redirect to={{ pathname: SIGNIN_ROUTE, state: { from: props.location } }} />
     )} />

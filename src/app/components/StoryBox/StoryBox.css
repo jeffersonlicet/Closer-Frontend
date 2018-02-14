@@ -1,5 +1,5 @@
 .story-form {
-    margin-top:10px;
+    margin-top:40px;
     margin-bottom: 10px;
 }
 
@@ -9,5 +9,55 @@
     font-size:13px;
     color: #F4726F;
     margin-bottom: 12px;
+}
+
+.story-form .icons-wrapper {
+}
+
+.story-writter-box {
+    border:1px solid #eee;
+    border-radius: 3px;
+    position: relative;
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+.story-writter-box ::before {
     
+}
+.story-writter-box:focus-within {
+    border:1px solid #F4726F!important;
+}
+
+.story-writter-box .ant-tabs-bar {
+    margin:0
+}
+
+.story-box-textarea {
+    border:1px solid transparent!important;
+    border-radius: 0px;
+    box-shadow:none;
+}
+.story-box-textarea:focus {
+    
+    box-shadow:none;
+}
+
+.story-writter-box:focus-within .story-caret {
+    color: #F4726F;
+}
+
+.story-caret {
+    position:absolute;
+    top:20px;
+    left:-10px;
+    color:#eee;
+    z-index: 8;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
 }

@@ -15,54 +15,7 @@ class Home extends React.Component {
               <Row type="flex" justify="center">
                 <Col span={12}>
                 <StoryBox />
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
-              <h1>Home</h1>
+              
               </Col>
               </Row>
            </Content>

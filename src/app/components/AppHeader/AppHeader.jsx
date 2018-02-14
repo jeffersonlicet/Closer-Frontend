@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Layout, Menu, Row, Col, Avatar, Icon, Badge, Input, Dropdown} from 'antd'
 import './AppHeader.css'
 import '../../vendor/Shadow/Shadow.css'
@@ -15,7 +16,7 @@ const avatarMenu = (
       <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">2nd menu item</a>
     </Menu.Item>
     <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">3rd menu item</a>
+      <Link to="/logout">Logout</Link>
     </Menu.Item>
   </Menu>
 );
@@ -35,7 +36,7 @@ class AppHeader extends React.Component {
               
               <Dropdown overlay={avatarMenu}>
                 <a className="ant-dropdown-link" href="#">
-                  <Avatar src="https://lastfm-img2.akamaized.net/i/u/770x0/ed315034aa143d4bfd05c309b244de77.jpg" style={{ backgroundColor: '#F4726F' }} icon="user" />
+                  <Avatar src="https://lastfm-img2.akamaized.net/i/u/770x0/ed315034aa143d4bfd05c309b244de77.jpg" style={{ backgroundColor: '#FFF' }} icon="user" />
                   <Icon style={ { marginLeft: 5 } } type="down" />
                 </a>
               </Dropdown>

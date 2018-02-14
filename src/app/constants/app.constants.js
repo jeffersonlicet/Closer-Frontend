@@ -12,3 +12,4 @@ export const SIGNIN_ROUTE = '/signin'
 export const SIGNUP_ROUTE = '/signup'
 
 export const PASSWORD_LENGHT = 6
+export const COOKIE_PREFIX = 'f93gjCloser'

@@ -221,7 +221,7 @@ class Signup extends React.Component {
                     title={this.props.signupForm.error.title}
                     visible={this.props.signupForm.anyError}
                     placement='right'>
-                    <Button style={{marginTop: '-10px'}} type='primary' size='large' htmlType='submit' className='shadow-1'>
+                    <Button disabled={this.props.isBusy} style={{marginTop: '-10px'}} type='primary' size='large' htmlType='submit' className='shadow-1'>
                         Sign up
                     </Button>
                   </ErrorPopover>

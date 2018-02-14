@@ -1,6 +1,7 @@
 import { 
   SIGNIN_SUCCESS, 
   SIGNUP_SUCCESS,
+  LOGOUT_SUCCESS,
   SHOW_SIGNIN_ERROR, 
   HIDE_SIGNIN_ERROR, 
   SHOW_SIGNUP_ERROR, 
@@ -13,14 +14,14 @@ import {
   HIDE_VALIDATING_EMAIL_ERROR,
   HIDE_VALIDATING_PASSWORD_ERROR,
   HIDE_VALIDATING_PASSWORD_CONFIRMATION_ERROR } from '../constants/auth.constants'
-import cookie from 'react-cookies'
+  import { read } from '../services/storage.services'
 
-let user = cookie.load('user')
-let credentials = cookie.load('credentials')
+let user = read('user')
+let credentials = read('credentials')
 
 const initialState = {
   loggedIn: !!user,
-  user: user,
+  user: !!user ? user : '',
   credentials: credentials,
   signinForm: { anyError: false, error: { title: '', content: '' } },
   signupForm: { 
@@ -34,6 +35,8 @@ const initialState = {
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
+    case LOGOUT_SUCCESS:
+      return { ...state, loggedIn: false, user: ''}
     case SIGNIN_SUCCESS:
       return { ...state, loggedIn: true, user: action.user, credentials: action.credentials, signinForm: { ...state.signinForm,  anyError: false } }
     case SIGNUP_SUCCESS:

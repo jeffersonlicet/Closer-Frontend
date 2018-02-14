@@ -16,7 +16,7 @@ import {
 
 import { PASSWORD_LENGHT } from '../constants/app.constants'
 
-import { SigninService, SignupService, UsernameVerification, EmailVerification } from '../services/auth.services'
+import { SigninService, SignupService, UsernameVerification, EmailVerification, Logout } from '../services/auth.services'
 import { toggleBusy } from '../actions/app.actions'
 import { showLoading, hideLoading } from 'react-redux-loading-bar'
 import { history } from '../helpers/history'
@@ -158,6 +158,17 @@ export const signup = (username, email, password) => {
   }
   
   function success(user, credentials) { return { type: SIGNUP_SUCCESS, user: user, credentials: credentials}}
+}
+
+export const logout = () => {
+  return dispatch => {
+    dispatch(toggleBusy(true))
+    dispatch(showLoading())
+    Logout()
+    dispatch(toggleBusy(false))
+    dispatch(hideLoading())
+    history.push('/')  
+  }
 }
 
 export const showSigninFormError = (title, message) => { return { type: SHOW_SIGNIN_ERROR, error: { title: title, content: message } }}

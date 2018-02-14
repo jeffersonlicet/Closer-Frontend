@@ -1,11 +1,10 @@
 import React from 'react'
-import cookie from 'react-cookies'
 import { Route, Redirect } from 'react-router-dom'
-
+import { read } from '../services/storage.services'
 
 const GuestRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
-          !cookie.load('loggedIn')
+          !read('loggedIn')
             ? <Component {...props} />
             : <Redirect to={{ pathname: '/', state: { from: props.location } }} />
     )} />
